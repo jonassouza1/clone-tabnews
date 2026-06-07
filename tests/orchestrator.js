@@ -78,6 +78,10 @@ async function getLastEmail() {
   lastEmailItem.text = emailTextBody;
   return lastEmailItem;
 }
+function extractUUID(text) {
+  const match = text.match(/[0-9a-fA-F-]{36}/);
+  return match ? match[0] : null;
+}
 
 const orchestrator = {
   waitForAllServices,
@@ -87,6 +91,7 @@ const orchestrator = {
   createSession,
   deleteAllEmails,
   getLastEmail,
+  extractUUID,
 };
 
 export default orchestrator;
