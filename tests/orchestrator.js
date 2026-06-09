@@ -5,6 +5,7 @@ import migrator from "models/migrator.js";
 import user from "models/user.js";
 import session from "models/session.js";
 import activation from "models/activation.js";
+import webserver from "infra/webserver.js";
 
 const emailHttpUrl = `http://${process.env.EMAIL_HTTP_HOST}:${process.env.EMAIL_HTTP_PORT}`;
 
@@ -28,8 +29,8 @@ async function createUser(userObject) {
     password: userObject?.password || "validpassword",
   });
 }
-async function createSession(userId) {
-  return await session.create(userId);
+async function createSession(userObject) {
+  return await session.create(userObject.id);
 }
 
 async function waitForWebServer() {
@@ -39,7 +40,7 @@ async function waitForWebServer() {
   });
 
   async function fatchStatusPage() {
-    const response = await fetch("http://localhost:3000/api/v1/status");
+    const response = await fetch(`${webserver.origin}/api/v1/status`);
     if (response.status !== 200) {
       throw Error();
     }
