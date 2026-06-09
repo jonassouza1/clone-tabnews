@@ -11,7 +11,7 @@ beforeAll(async () => {
 
 describe("PATCH /api/v1/users/[username]", () => {
   describe("Anonymous user", () => {
-    test("With unique 'username'", async () => {
+    test("With unique `username`", async () => {
       const createdUser = await orchestrator.createUser();
 
       const response = await fetch(
@@ -41,7 +41,7 @@ describe("PATCH /api/v1/users/[username]", () => {
   });
 
   describe("Default user", () => {
-    it("With nonexistent 'username'", async () => {
+    it("With nonexistent `username`", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);
       const sessionObject = await orchestrator.createSession(activatedUser.id);
@@ -67,7 +67,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       });
     });
 
-    it("With duplicated 'username'", async () => {
+    it("With duplicated `username`", async () => {
       await orchestrator.createUser({
         username: "user1",
       });
@@ -141,7 +141,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       });
     });
 
-    it("With duplicated 'email'", async () => {
+    it("With duplicated `email`", async () => {
       await orchestrator.createUser({
         email: "email1@email.com.br",
       });
@@ -180,7 +180,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       });
     });
 
-    it("With unique 'username'", async () => {
+    it("With unique `username`", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);
       const sessionObject = await orchestrator.createSession(activatedUser.id);
@@ -214,7 +214,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       expect(responseBody.updated_at > responseBody.created_at).toBe(true);
     });
 
-    it("With unique 'email'", async () => {
+    it("With unique `email`", async () => {
       const createdUser = await orchestrator.createUser();
       const activatedUser = await orchestrator.activateUser(createdUser);
       const sessionObject = await orchestrator.createSession(activatedUser.id);
@@ -248,7 +248,7 @@ describe("PATCH /api/v1/users/[username]", () => {
       expect(responseBody.updated_at > responseBody.created_at).toBe(true);
     });
 
-    it("With new 'password'", async () => {
+    it("With new `password`", async () => {
       const createdUser = await orchestrator.createUser({
         password: "newPassword1",
       });
