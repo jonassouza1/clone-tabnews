@@ -49,7 +49,7 @@ describe("Use case: Registration Flow (all successful)", () => {
 
     expect(lastEmail.sender).toBe("<contato@clonetabcoins.com.br>");
     expect(lastEmail.recipients[0]).toBe("<registration.flow@curso.dev>");
-    expect(lastEmail.subject).toBe("Ative seu cadastro no FinTab!");
+    expect(lastEmail.subject).toBe("Ative seu cadastro no ClonetabCoins!");
     expect(lastEmail.text).toContain("RegistrationFlow");
 
     activationTokenId = orchestrator.extractUUID(lastEmail.text);
