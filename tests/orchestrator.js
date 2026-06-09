@@ -29,8 +29,8 @@ async function createUser(userObject) {
     password: userObject?.password || "validpassword",
   });
 }
-async function createSession(userId) {
-  return await session.create(userId);
+async function createSession(userObject) {
+  return await session.create(userObject.id);
 }
 
 async function waitForWebServer() {
